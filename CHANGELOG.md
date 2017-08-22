@@ -3,7 +3,7 @@
 ## [Unreleased]
 ~Changed ambassador function, click card to ambassador or click button ambassador both
 -Make an updater python script to download new exe each time
--Start a new game without restarting the program  --> PROBLEM -- have to reset opponent cards to blank
+^^^^^-Start a new game without restarting the program  
 ones at start of new game, as well as coins, decknum, etc!!!!!!!!!!!!!!!!
 -all rwby powers implemented, along with crossed rwby icons when used
 -all characters have rwby icons shown, and displayed to everyone when used in same manner as coup cards

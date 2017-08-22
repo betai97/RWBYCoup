@@ -2,6 +2,9 @@ A description of rules will be added here at some point
 
 
 
+A new windows exe file will become available after each new major release. A new jar will become available after
+each new push to github.
+
 
 To run:
 Windows:
