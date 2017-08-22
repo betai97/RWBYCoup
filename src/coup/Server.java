@@ -404,9 +404,13 @@ class Game implements Runnable {
             threads[i].getOS().println("$playeru card1 " + players[i].card1);
             threads[i].getOS().println("$playeru card2 " + players[i].card2);
             threads[i].getOS().println("$playeru rwbyid " + players[i].rwbyid);
+            
+            dispCoins(i);
 
             for (int j = 1; j < playerNum; j++) {
                 threads[i].getOS().println("$player" + j + " name " + tempPlayers.get(j).name);
+                threads[i].getOS().println("$player" + j + " card1 back");
+                threads[i].getOS().println("$player" + j + " card2 back");
             }
             Collections.rotate(tempPlayers, -1);
         }
@@ -420,6 +424,8 @@ class Game implements Runnable {
     public void run() {
         //set up game
         initialize();
+        sleep(1);
+        Client.writeToOS("&-------------------------------------------------------------------------------------------------------------------");
         sleep(1);
         Client.writeToOS("&Welcome to RWBY Coup!");
         sleep(2);
