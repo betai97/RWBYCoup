@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coup.GameOverPopupController">
+   <children>
+      <Label fx:id="message" layoutX="22.0" layoutY="23.0" prefHeight="57.0" prefWidth="257.0" />
+      <Button layoutX="110.0" layoutY="96.0" mnemonicParsing="false" onAction="#close" prefHeight="17.0" prefWidth="80.0" text="Ok" />
+   </children>
+</AnchorPane>

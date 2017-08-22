@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1002.0" style="-fx-background-color: green;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coup.GameScene7Controller">
+    <children>
+      <Button id="assassin" fx:id="button" layoutX="274.0" layoutY="646.0" onAction="#assassinate" text="Assassinate" />
+      <Button id="foreign_aid" fx:id="button1" layoutX="381.0" layoutY="646.0" onAction="#foreignaid" text="Foreign Aid" />
+      <Button id="ambassador" fx:id="button2" layoutX="18.0" layoutY="682.0" onAction="#ambassador1" text="Ambassador 1" />
+      <Button id="steal" fx:id="button3" layoutX="109.0" layoutY="646.0" onAction="#steal" text="Steal" />
+      <Button id="duke" fx:id="button4" layoutX="187.0" layoutY="646.0" onAction="#duke" text="Duke" />
+      <Button id="income" fx:id="button5" layoutX="15.0" layoutY="646.0" onAction="#income" text="Income" />
+      <Button id="coup" fx:id="button11" layoutX="485.0" layoutY="646.0" onAction="#coup" text="Coup" />
+      <Button id="challenge" fx:id="button111" layoutX="548.0" layoutY="646.0" onAction="#challenge" prefHeight="25.0" prefWidth="108.0" text="Challenge" textAlignment="CENTER" />
+      <TextArea id="chat" fx:id="textarea" editable="false" layoutX="691.0" layoutY="49.0" prefHeight="587.0" prefWidth="283.0" wrapText="true" />
+      <TextField fx:id="textfield" layoutX="693.0" layoutY="663.0" onKeyPressed="#sendmessage" prefHeight="31.0" prefWidth="283.0" promptText="Enter a message to send" />
+      <Label layoutX="819.0" layoutY="22.0" text="Chat" textFill="WHITE" />
+      <Separator layoutX="665.0" layoutY="17.0" orientation="VERTICAL" prefHeight="685.0" prefWidth="4.0" style="-fx-background-color: white;" />
+      <ImageView fx:id="pcard2" fitHeight="139.0" fitWidth="100.0" layoutX="331.0" layoutY="288.0" onMouseClicked="#loseCard2" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../back.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="pcard1" fitHeight="139.0" fitWidth="100.0" layoutX="212.0" layoutY="288.0" onMouseClicked="#loseCard1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../back.png" />
+         </image>
+      </ImageView>
+      <TextArea fx:id="dialogue" editable="false" layoutX="29.0" layoutY="489.0" prefHeight="139.0" prefWidth="607.0" wrapText="true" />
+      <Label layoutX="294.0" layoutY="464.0" text="Narration" textFill="WHITE" />
+      <Label fx:id="p1" layoutX="35.0" layoutY="121.0" text="P1" textFill="WHITE" />
+      <Label fx:id="p2" layoutX="116.0" layoutY="14.0" text="P2" textFill="WHITE" />
+      <Label fx:id="p3" layoutX="280.0" layoutY="14.0" text="P3" textFill="WHITE" />
+      <Label fx:id="p4" layoutX="420.0" layoutY="14.0" text="P4" textFill="WHITE" />
+      <Label fx:id="p5" layoutX="546.0" layoutY="14.0" text="P5" textFill="WHITE" />
+      <Label fx:id="p6" layoutX="555.0" layoutY="214.0" text="P6" textFill="WHITE" />
+      <Label fx:id="pplayer" layoutX="294.0" layoutY="258.0" text="Player" textFill="WHITE" />
+      <Label layoutX="47.0" layoutY="317.0" text="Deck" textFill="WHITE" />
+      <Label fx:id="decknum" layoutX="96.0" layoutY="401.0" text="x2" textFill="WHITE" />
+      <Button id="rwbyaction" layoutX="447.0" layoutY="682.0" mnemonicParsing="false" onAction="#rwbyaction" text="RWBY" />
+      <ImageView fitHeight="78.0" fitWidth="42.0" layoutX="450.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../coin.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="78.0" fitWidth="42.0" layoutX="43.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../coin.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="78.0" fitWidth="42.0" layoutX="161.0" layoutY="161.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../coin.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="78.0" fitWidth="42.0" layoutX="562.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../coin.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="78.0" fitWidth="42.0" layoutX="541.0" layoutY="161.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../coin.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="78.0" fitWidth="42.0" layoutX="412.0" layoutY="161.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../coin.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="78.0" fitWidth="42.0" layoutX="280.0" layoutY="161.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../coin.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="coins2" layoutX="209.0" layoutY="173.0" text="x2" textFill="WHITE" />
+      <Label fx:id="coins1" layoutX="90.0" layoutY="266.0" text="x2" textFill="WHITE" />
+      <Label fx:id="coins3" layoutX="327.0" layoutY="173.0" text="x2" textFill="WHITE" />
+      <ImageView fx:id="rwbyidentity" fitHeight="52.0" fitWidth="56.0" layoutX="440.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ruby.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="coins4" layoutX="459.0" layoutY="173.0" text="x2" textFill="WHITE" />
+      <Label fx:id="coins5" layoutX="590.0" layoutY="173.0" text="x2" textFill="WHITE" />
+      <Label fx:id="coins6" layoutX="609.0" layoutY="372.0" text="x2" textFill="WHITE" />
+      <Label fx:id="playercoins" layoutX="495.0" layoutY="372.0" text="x2" textFill="WHITE" />
+      <ImageView fx:id="p1card2" fitHeight="84.0" fitWidth="64.0" layoutX="80.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../smallback.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="p1card1" fitHeight="84.0" fitWidth="64.0" layoutX="12.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../smallback.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="p2card1" fitHeight="84.0" fitWidth="64.0" layoutX="72.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../smallback.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="p2card2" fitHeight="84.0" fitWidth="64.0" layoutX="143.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../smallback.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="p3card1" fitHeight="84.0" fitWidth="64.0" layoutX="223.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../smallback.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="p3card2" fitHeight="84.0" fitWidth="64.0" layoutX="290.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../smallback.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="p4card2" fitHeight="84.0" fitWidth="64.0" layoutX="441.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../smallback.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="p4card1" fitHeight="84.0" fitWidth="64.0" layoutX="375.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../smallback.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="p5card1" fitHeight="84.0" fitWidth="64.0" layoutX="516.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../smallback.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="p5card2" fitHeight="84.0" fitWidth="64.0" layoutX="585.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../smallback.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="p6card1" fitHeight="84.0" fitWidth="64.0" layoutX="523.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../smallback.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="p6card2" fitHeight="84.0" fitWidth="64.0" layoutX="591.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../smallback.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="84.0" fitWidth="64.0" layoutX="31.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../smallback.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="239.0" layoutY="267.0" text="Card 1" textFill="WHITE" />
+      <Label layoutX="375.0" layoutY="267.0" text="Card 2" textFill="WHITE" />
+      <Button id="ambassador" fx:id="button21" layoutX="151.0" layoutY="682.0" onAction="#ambassador2" text="Ambassador 2" />
+      <Button id="ambassador" fx:id="button211" layoutX="282.0" layoutY="682.0" onAction="#ambassadorboth" text="Ambassador Both " />
+      <ImageView fx:id="light" fitHeight="73.0" fitWidth="78.0" layoutX="115.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../red_light.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="522.0" layoutY="682.0" mnemonicParsing="false" onAction="#extendChallenge" prefHeight="25.0" prefWidth="134.0" text="Extend Challenge" />
+    </children>
+</AnchorPane>

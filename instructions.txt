@@ -1,0 +1,28 @@
+How to use portmapper for RWBY Coup hosting:
+
+Note: If someone else is hosting and you are connecting, you don't need to worry about any of this
+
+(1) Open portmapper jar
+(2) Click create
+(3) Add a description (something informative like RWBY portmap or something)
+(4) Make sure internal client IP listed is the correct one for your network card. You can
+check this by opening cmd.exe, typing "ipconfig", and scrolling to "Wireless LAN adapter wifi"
+(if you're using wifi), and checking that the IPv4 address listed matches. If they don't match, 
+uncheck "Use local host" in the portmapper program, and change the IP to the correct one listed in the cmd.exe. 
+(5) Click add
+(6) Make the internal and external ports both 2222
+(7) Make sure protocol is TCP (it should be anyway by default)
+(8) Click save
+(9) Click connect. If it gives any sort of error in the log messages, click portmapper settings and 
+switch the upnp library to something else, and try clicking connect again.
+(10) Click the created mapping you made in the "port mapping presets" section; it should have
+the description you gave it before
+(11) click use
+(12) The log messages section should say something like:
+INFO  adding port mapping RWBYPortmap
+INFO  adding port mapping ()
+INFO  1 port mapping added successfully
+INFO  Found 8 mappings
+
+If it says something like this, then you are done, and can proceed to opening the RWBYCoup program, 
+hosting, and sharing the displayed IP with the other players.

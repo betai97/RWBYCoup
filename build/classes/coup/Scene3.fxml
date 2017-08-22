@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1002.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coup.Scene3Controller">
+   <children>
+      <ImageView fitHeight="720.0" fitWidth="1002.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../scene1bg.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="357.0" layoutY="192.0" text="Host game on local computer" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nickname" layoutX="183.0" layoutY="269.0" prefHeight="22.0" prefWidth="246.0" promptText="Enter a nickname" />
+      <Button layoutX="471.0" layoutY="266.0" mnemonicParsing="false" onAction="#nicknameconnect" prefHeight="32.0" prefWidth="111.0" text="Save Nickname" />
+      <Label fx:id="ip" layoutX="183.0" layoutY="321.0" prefHeight="32.0" prefWidth="246.0" text="Your IP Address: " textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Button id="beginhost" layoutX="207.0" layoutY="383.0" mnemonicParsing="false" onAction="#host" prefHeight="43.0" prefWidth="156.0" style="-fx-background-color: black;" text="Begin hosting" textFill="WHITE" textOverrun="CLIP" />
+      <TextArea fx:id="connected" editable="false" layoutX="611.0" layoutY="360.0" prefHeight="335.0" prefWidth="365.0" />
+      <Label layoutX="750.0" layoutY="333.0" text="Users Connected" textFill="WHITE" />
+      <Button fx:id="startbutton" layoutX="207.0" layoutY="565.0" mnemonicParsing="false" onAction="#startgame" prefHeight="51.0" prefWidth="156.0" text="Start Game" />
+      <ImageView fitHeight="215.0" fitWidth="135.0" layoutX="429.0" layoutY="497.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../salem.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="133.0" fitWidth="148.0" layoutX="813.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../roman.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="115.0" layoutY="274.0" text="Nickname:" textFill="WHITE" />
+      <Label layoutX="13.0" layoutY="383.0" prefHeight="43.0" prefWidth="205.0" text="Click this before saving nickname -&gt;" textFill="WHITE" />
+   </children>
+</AnchorPane>

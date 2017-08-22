@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1002.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coup.Scene2Controller">
+   <children>
+      <ImageView fitHeight="720.0" fitWidth="1034.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../scene1bg.jpg" />
+         </image>
+      </ImageView>
+      <TextField fx:id="ipaddress" layoutX="266.0" layoutY="412.0" prefHeight="31.0" prefWidth="235.0" promptText="Enter IP Address" />
+      <Button layoutX="543.0" layoutY="412.0" mnemonicParsing="false" onAction="#connect" prefHeight="31.0" prefWidth="109.0" text="Connect" />
+      <Label layoutX="313.0" layoutY="184.0" text="Connect to game on remote host" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="200.0" fitWidth="194.0" layoutY="526.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../tyrion.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="nickname" layoutX="266.0" layoutY="302.0" prefHeight="31.0" prefWidth="235.0" promptText="Enter a nickname" />
+      <Label layoutX="180.0" layoutY="310.0" text="Nickname:" textFill="WHITE" />
+      <Label layoutX="180.0" layoutY="419.0" text="IP Address:" textFill="WHITE" />
+      <ProgressBar fx:id="loading" layoutX="365.0" layoutY="520.0" opacity="0.0" prefHeight="31.0" prefWidth="356.0" progress="0.0" />
+      <Label fx:id="wait" layoutX="172.0" layoutY="521.0" opacity="0.0" prefHeight="31.0" prefWidth="186.0" text="Waiting for game to start" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
