@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" minHeight="714.0" minWidth="998.0" prefHeight="714.0" prefWidth="998.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coup.Scene1Controller">
+<AnchorPane id="AnchorPane" minHeight="362.0" minWidth="499.0" prefHeight="714.0" prefWidth="998.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coup.Scene1Controller">
    
    <children>
       <ImageView pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.4254302978515625" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -17,12 +17,12 @@
             <Image url="@../scene1bg.jpg" />
          </image>
       </ImageView>
-      <Button id="host" fx:id="host" layoutX="89.0" layoutY="293.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="291.0" prefWidth="234.0" text="Host" AnchorPane.bottomAnchor="136.0" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="679.0" AnchorPane.topAnchor="293.0">
+      <Button id="host" fx:id="host" layoutX="89.0" layoutY="293.0" maxHeight="291.0" maxWidth="234.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="291.0" prefWidth="234.0" text="Host" AnchorPane.bottomAnchor="136.0" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="679.0" AnchorPane.topAnchor="293.0">
          <font>
             <Font size="31.0" />
          </font>
       </Button>
-      <Button id="connect" fx:id="connect" layoutX="655.0" layoutY="293.0" minHeight="291.0" minWidth="234.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="291.0" prefWidth="234.0" text="Connect" AnchorPane.bottomAnchor="136.0" AnchorPane.leftAnchor="655.0" AnchorPane.rightAnchor="113.0" AnchorPane.topAnchor="293.0">
+      <Button id="connect" fx:id="connect" layoutX="655.0" layoutY="293.0" maxHeight="291.0" maxWidth="234.0" minHeight="291.0" minWidth="234.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="291.0" prefWidth="234.0" text="Connect" AnchorPane.bottomAnchor="136.0" AnchorPane.leftAnchor="655.0" AnchorPane.rightAnchor="113.0" AnchorPane.topAnchor="293.0">
          <font>
             <Font size="31.0" />
          </font>

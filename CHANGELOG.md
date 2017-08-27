@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 ~Changed ambassador function, click card to ambassador or click button ambassador both
--Make an updater python script to download new exe each time
+^^^^^-Make an updater script to download new exe each time
 ^^^^^-Start a new game without restarting the program  
 ones at start of new game, as well as coins, decknum, etc!!!!!!!!!!!!!!!!
 -all rwby powers implemented, along with crossed rwby icons when used
@@ -33,12 +33,3 @@ which card to challenge with)
 -super-contessa bug
 -steal from ambassador bug
 -SocketTimeoutException bug
-
-
-# Program description
---> Each program packaged with server and client code, with 1 player acting as host, and the rest
-connecting as clients; host uses port forwarding if playing over internet
---> Host runs actual game code, clients send moves when approved by host to do so and receive updates on
-game situation from host
---> Program distributed as jar or setup.exe, made with launch4j for exe and inno setup compiler
-for ensuring exe has bundled jre access

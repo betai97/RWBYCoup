@@ -132,7 +132,7 @@ class StartGame implements Runnable {
             }
         }
         
-        //wait for game to be over, then start a new game, ad infinitum (user can exit by quitting)
+        //wait for game to be over, then start a new game, ad infinitum (user can exit by quitting), checking if game is over every 30 secs
         while (true) {
             if (Server.startNewGame) {
                 game = new Game(threads);
@@ -1035,6 +1035,8 @@ class Game implements Runnable {
                     
                     Client.writeToOS("&" + players[challengerId].name + " challenges " + players[pNum].name + "!");
                     
+                    sleep(2);
+                    
                     switch(move) {
                         case "duke":
                             if(players[pNum].card1.equals("duke") || players[pNum].card2.equals("duke")) {
@@ -1083,6 +1085,72 @@ class Game implements Runnable {
                             }
                             return false;
                         case "assassinate":
+                            if (pTarget == challengerId) {
+                                threads[pTarget].getOS().println("&You may now block with the contessa, call " + players[pNum].name + " on the assassin, or do nothing to allow the assassination.");
+                                threads[pTarget].getOS().println("&You have 40 seconds to make your move.");
+                                threads[pTarget].getOS().println("$light blue_light");
+                                double elapsed = makeMove(pTarget, 40);
+                                threads[pTarget].getOS().println("$light red_light");
+                                if (elapsed >= 40) {
+                                    Client.writeToOS("&" + players[pNum].name + " has successfully assassinated " + players[pTarget].name + "!");
+                                    return false;
+                                } else {
+                                    if(Server.move.substring(1).equals("blockAssassination")) {
+                                        Client.writeToOS("&" + players[pTarget].name + " has blocked with the contessa!");
+                                        threads[pNum].getOS().println("&Hit the challenge button again to call " + players[pTarget].name + " on the contessa.");
+                                        threads[pNum].getOS().println("$light yellow_light");
+                                        elapsed = makeMove(pNum, 40);
+                                        if(elapsed >= 40) {
+                                            Client.writeToOS("&" + players[pNum].name + " has not challenged " + players[pTarget].name + " on the contessa!");
+                                            return true;
+                                        }
+                                        else {
+                                            Client.writeToOS("&" + players[pNum].name + " has challenged " + players[pTarget].name + " on the contessa!");
+                                            if(players[pTarget].card1.equals("contessa") || players[pTarget].card2.equals("contessa")) {
+                                                Client.writeToOS("&" + players[pTarget].name + " has the contessa! " + players[pNum].name + " loses a card!");
+                                                loseCard(pNum);
+                                                if (players[pTarget].card1.equals("contessa")) {
+                                                    swapCard1(pTarget);
+                                                } else {
+                                                    swapCard2(pTarget);
+                                                }
+                                                return true;
+                                            } else {
+                                                Client.writeToOS("&" + players[pTarget].name + " does not have the contessa! " + players[pTarget].name + " loses a card, and the assassination goes through!");
+                                                loseCard(pTarget);
+                                                return false;
+                                            }
+                                        }
+                                    }
+                                    else if(Server.move.substring(1).equals("callOnAssassin")) {
+                                        Client.writeToOS("&" + players[pTarget].name + " calls " + players[pNum].name + " on the assassin!");
+                                        if(players[pNum].card1.equals("assassin") || players[pNum].card2.equals("assassin")) {
+                                            Client.writeToOS("&" + players[pNum].name + " has the assassin! " + players[pTarget].name + " loses a card, and the assassination succeeds!");
+                                            loseCard(pTarget);
+                                            if (players[pNum].card1.equals("assassin")) {
+                                                    swapCard1(pNum);
+                                                } else {
+                                                    swapCard2(pNum);
+                                                }
+                                            return false;
+                                        } else {
+                                            Client.writeToOS("&" + players[pNum].name + " does not have the assassin! " + players[pNum].name + " loses a card, and the assassination fails!");
+                                            loseCard(pNum);
+                                            return true;
+                                        }
+                                    }
+                                    else {
+                                        threads[pNum].getOS().println("&Invalid move, this will be taken as not challenging!");
+                                        Client.writeToOS("&" + players[pNum].name + " has not challenged " + players[pTarget].name + " on the contessa!");
+                                        return false;
+                                    }
+                                }
+                            }
+                            else {
+                                Client.writeToOS("&Only the target may challenge, resuming challenge period.");
+                                continue;
+                            }
+                        /*
                             if ((players[pTarget].card1.equals("contessa") || players[pTarget].card2.equals("contessa")) && pTarget == challengerId) {
                                 Client.writeToOS("&" + players[pTarget].name + " has the contessa!");
                                 Client.writeToOS("&" + players[pNum].name + " loses a card!");
@@ -1104,6 +1172,7 @@ class Game implements Runnable {
                                 loseCard(pNum);
                                 return true;
                             }
+                         */
                         case "steal":
                             if(players[pNum].card1.equals("captain") || players[pNum].card2.equals("captain") || players[pNum].card1.equals("ambassador") || players[pNum].card1.equals("ambassador")) {
                                 Client.writeToOS("&" + players[pNum].name + " has the captain or ambassador!");

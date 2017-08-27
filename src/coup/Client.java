@@ -16,6 +16,7 @@ import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
@@ -36,10 +37,14 @@ public class Client implements Runnable {
 
     //references to game scene elements
     static volatile TextArea area, dialogue;
-    static volatile Label decknum, playerCoins[], playerNames[];
-    static volatile ImageView rwbyId, light, cards[];
-    static BooleanHold turn, respond, choice, challenge;
-
+    static Label decknum, playerCoins[], playerNames[];
+    static ImageView rwbyId, light, cards[];
+    static BooleanHold turn, respond, choice, challenge, claim;
+    static Button[] claimButtons;
+    static Label[] claimLabels;
+    
+    
+    
     public static Scene2Controller scene2Ref;
     public static Scene3Controller scene3Ref;
     public static boolean sc2T;
@@ -100,12 +105,12 @@ public class Client implements Runnable {
 
     }
 
-    public static synchronized void writeToOS(String chatText)//executed on enter key of text box in chat
-    {
+    public static synchronized void writeToOS(String chatText) {
         os.println(chatText);
     }
     
-    public static void setGameElems(TextArea area, TextArea dialogue, ImageView[] cards, ImageView rwbyId, ImageView light, Label decknum, Label[] playerCoins, Label[] playerNames, BooleanHold turn, BooleanHold respond, BooleanHold choice, BooleanHold challenge) {
+    public static void setGameElems(TextArea area, TextArea dialogue, ImageView[] cards, ImageView rwbyId, ImageView light, Label decknum, Label[] playerCoins, Label[] playerNames, 
+            BooleanHold turn, BooleanHold respond, BooleanHold choice, BooleanHold challenge, BooleanHold claim, Label[] claimLabels, Button[] claimButtons) {
         Client.area = area;
         Client.dialogue = dialogue;
         Client.decknum = decknum;
@@ -118,6 +123,9 @@ public class Client implements Runnable {
         Client.respond = respond;
         Client.choice = choice;
         Client.challenge = challenge;
+        Client.claim = claim;
+        Client.claimLabels = claimLabels;
+        Client.claimButtons = claimButtons;
     }
 
     public static void close(String message) throws IOException {
@@ -180,7 +188,20 @@ public class Client implements Runnable {
         }
     }
 
-    
+    public static void setClaimViewable(double d) {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                for (Button b : claimButtons) {
+                    //System.out.println(b.toString());
+                    b.setOpacity(d);
+                }
+                for (Label l : claimLabels) {
+                    l.setOpacity(d);
+                }
+            }
+        });
+    }
     
     @Override
     public void run() {
@@ -221,7 +242,7 @@ public class Client implements Runnable {
                                                     scene2Ref.root = FXMLLoader.load(getClass().getResource("GameScene7.fxml"));
                                                     break;
                                                 default:
-                                                    System.out.println("\n---Fatal Error- Invalid Number of Players---\n");
+                                                    System.err.println("\n---Fatal Error- Invalid Number of Players---\n");
                                                     System.exit(1);
                                             }
                                         } catch (IOException ex) {
@@ -263,7 +284,7 @@ public class Client implements Runnable {
                                                     scene3Ref.root = FXMLLoader.load(getClass().getResource("GameScene7.fxml"));
                                                     break;
                                                 default:
-                                                    System.out.println("\n---Fatal error---\n");
+                                                    System.err.println("\n---Fatal Error- Invalid Number of Players---\n");
                                                     System.exit(1);
                                             }
                                         } catch (IOException ex) {
@@ -297,9 +318,10 @@ public class Client implements Runnable {
             terminate();
         }
 
-        //pause to allow textareas to be assigned (from fx scene switch thread)
+        //pause to allow gui elements to be assigned (from fx scene switch thread)
         while(Client.area == null || Client.dialogue == null || Client.decknum == null || Client.playerCoins == null  || Client.playerNames == null  || 
-                Client.rwbyId == null  || Client.cards == null  || Client.light == null  || Client.turn == null  || Client.respond == null  || Client.choice == null ) {
+                Client.rwbyId == null  || Client.cards == null  || Client.light == null  || Client.turn == null  || Client.respond == null  || Client.choice == null || Client.challenge == null
+                || Client.claim == null || Client.claimLabels == null || Client.claimButtons == null) {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException ex) {
@@ -307,13 +329,7 @@ public class Client implements Runnable {
             }
         }
 
-        //assign reference to text area
-        //final TextArea taRef = area;
-
-        /*
-     * Keep on reading from the socket till we receive "Bye" from the
-     * server. Once we received that then we want to break.
-         */
+        //process different communications from host server, ie chat text, game communications, etc, and end game when Bye message is sent
         try {
             while ((responseLine = is.readLine()) != null) {
                 System.out.println(responseLine);
@@ -381,11 +397,27 @@ public class Client implements Runnable {
                                             case "yellow_light":
                                                 challenge.value = true;
                                                 break;
+                                            case "blue_light":
+                                                claim.value = true;
+                                                Platform.runLater(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        setClaimViewable(1.0);
+                                                    }
+                                                });
+                                                break;
                                             case "red_light":
                                                 turn.value = false;
                                                 choice.value = false;
                                                 respond.value = false;
                                                 challenge.value = false;
+                                                claim.value = false;
+                                                Platform.runLater(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        setClaimViewable(0.0);
+                                                    }
+                                                });
                                                 break;
                                             default:
                                                 break;

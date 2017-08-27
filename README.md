@@ -3,8 +3,16 @@ A description of rules will be added here at some point
 
 
 A new windows exe file will become available after each new major release. A new jar will become available after
-each new push to github.
+each update of code.
 
+
+Program design:
+--> Each program is packaged with server and client code, with 1 player acting as host, and the rest
+connecting as clients; host uses port forwarding if playing over internet
+--> The host runs actual game code, clients send moves when approved by host to do so and receive updates on
+game situation from host
+--> Program distributed as jar or setup.exe, made with launch4j for exe and inno setup compiler
+for ensuring exe has bundled jre access
 
 To run:
 Windows:

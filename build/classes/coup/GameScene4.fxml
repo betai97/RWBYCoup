@@ -113,5 +113,11 @@
       </ImageView>
       <Label fx:id="player3coins" layoutX="538.0" layoutY="201.0" text="x2" textFill="WHITE" />
       <Button layoutX="518.0" layoutY="682.0" mnemonicParsing="false" onAction="#extendChallenge" prefHeight="25.0" prefWidth="137.0" text="Extend Challenge" />
+      <Button fx:id="blockwambassador" layoutX="488.0" layoutY="460.0" mnemonicParsing="false" onAction="#blockStealwAmbassador" opacity="0.0" text="Block w/ Ambassador" />
+      <Button fx:id="blockwcaptain" layoutX="377.0" layoutY="460.0" mnemonicParsing="false" onAction="#blockStealwCaptain" opacity="0.0" text="Block w/ Captain" />
+      <Label fx:id="stealLabel" layoutX="472.0" layoutY="443.0" opacity="0.0" text="Steal" textFill="WHITE" />
+      <Label fx:id="assassinationLabel" layoutX="140.0" layoutY="441.0" opacity="0.0" text="Assassination" textFill="WHITE" />
+      <Button fx:id="blockwContessa" layoutX="118.0" layoutY="460.0" mnemonicParsing="false" onAction="#blockAssassination" opacity="0.0" text="Block" />
+      <Button fx:id="callAssassin" layoutX="177.0" layoutY="460.0" mnemonicParsing="false" onAction="#callOnAssassin" opacity="0.0" text="Call" />
     </children>
 </AnchorPane>

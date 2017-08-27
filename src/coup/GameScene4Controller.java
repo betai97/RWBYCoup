@@ -5,12 +5,12 @@
  */
 package coup;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -26,7 +26,7 @@ import javafx.scene.input.MouseEvent;
  */
 public class GameScene4Controller implements Initializable {
     
-    BooleanHold turn, respond, choice, challenge;
+    BooleanHold turn, respond, choice, challenge, claim;
     
     @FXML 
     private TextArea textarea, dialogue;
@@ -36,6 +36,11 @@ public class GameScene4Controller implements Initializable {
     private ImageView player1card1, player1card2, playercard1, playercard2, player2card1, player2card2, player3card1, player3card2, rwbyidentity, light;
     @FXML
     Label player1coins, playercoins, player2coins, player3coins, decknum, player, player1, player2, player3;
+    
+    @FXML
+    Label assassinationLabel, stealLabel;
+    @FXML
+    Button blockwContessa, callAssassin, blockwcaptain, blockwambassador, callCaptain;
     
    public void sendmessage(KeyEvent event) {
        if(event.getCode() == KeyCode.ENTER) {
@@ -140,6 +145,53 @@ public class GameScene4Controller implements Initializable {
         light.setImage(new Image(getClass().getResource("/red_light.png").toString()));
         turn.value = false;
     }
+    
+    
+    
+    public void blockAssassination() throws FileNotFoundException {
+        if (claim.value) {
+            Client.writeToOS("#blockAssassination");
+            claim.value = false;
+            Client.setClaimViewable(0.0);
+            offTurn();
+        }
+    }
+
+    public void callOnAssassin() throws FileNotFoundException {
+        if (claim.value) {
+            Client.writeToOS("#callOnAssassin");
+            claim.value = false;
+            Client.setClaimViewable(0.0);
+            offTurn();
+        }
+    }
+
+    public void blockStealwAmbassador() throws FileNotFoundException {
+        if (claim.value) {
+            Client.writeToOS("#blockStealwAmbassador");
+            claim.value = false;
+            Client.setClaimViewable(0.0);
+            offTurn();
+        }
+    }
+
+    public void blockStealwCaptain() throws FileNotFoundException {
+        if (claim.value) {
+            Client.writeToOS("#blockStealwCaptain");
+            claim.value = false;
+            Client.setClaimViewable(0.0);
+            offTurn();
+        }
+    }
+
+    public void callOnCaptain() throws FileNotFoundException {
+        if (claim.value) {
+            Client.writeToOS("#callOnCaptain");
+            claim.value = false;
+            Client.setClaimViewable(0.0);
+            offTurn();
+        }
+    }
    
    
     @Override
@@ -152,12 +204,17 @@ public class GameScene4Controller implements Initializable {
         choice = new BooleanHold();
         respond = new BooleanHold();
         challenge = new BooleanHold();
+        claim = new BooleanHold();
         
         turn.value = false;
         respond.value = false;
         choice.value = false;
         challenge.value = false;
+        claim.value = false;
         
-        Client.setGameElems(textarea, dialogue, cards, rwbyidentity, light, decknum, coins, names, turn, respond, choice, challenge);
+        Label[] claimLabels = {assassinationLabel, stealLabel};
+        Button[] claimButtons = {blockwContessa, callAssassin, blockwcaptain, blockwambassador, callCaptain};
+        
+        Client.setGameElems(textarea, dialogue, cards, rwbyidentity, light, decknum, coins, names, turn, respond, choice, challenge, claim, claimLabels, claimButtons);
     }    
 }
