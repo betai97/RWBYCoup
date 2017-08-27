@@ -2,9 +2,7 @@
 
 ## [Unreleased]
 ~Changed ambassador function, click card to ambassador or click button ambassador both
-^^^^^-Make an updater script to download new exe each time
-^^^^^-Start a new game without restarting the program  
-ones at start of new game, as well as coins, decknum, etc!!!!!!!!!!!!!!!!
+-Updater script to download new exe each time 
 -all rwby powers implemented, along with crossed rwby icons when used
 -all characters have rwby icons shown, and displayed to everyone when used in same manner as coup cards
 -improved challenge function, allowing player to claim having a certain card for further challenge
@@ -16,6 +14,17 @@ ones at start of new game, as well as coins, decknum, etc!!!!!!!!!!!!!!!!
 -neater code, fully commented
 -save chat logs option
 --include descrip of game, all rwby powers and rules, etc
+
+## [1.1] - 2017-9-4
+### Added
+-New games start at the end of old ones, without having to restart the program
+
+### Fixed
+-Assassination in challenge function now generally works as it should, allowing target to claim a card
+or call attacker on assassin 
+
+## Bugs
+-Sometimes get an exception in changing opacity of challenging buttons in assassination
 
 ## [1.0] - 2017-8-18
 ### Added
